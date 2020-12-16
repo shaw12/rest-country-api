@@ -8,16 +8,6 @@ import InputSearch from './components/InputSearch';
 
 function App() {
 
-  const [countries, setCountries] = useState([])
-
-  useEffect(() => {
-    fetch('https://restcountries.eu/rest/v2/all')
-    .then((res) => res.json())
-    .then((data) => {
-      setCountries(data)
-    })
-  }, [])  
-
   console.log(countries)
 
   return (
@@ -26,25 +16,14 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/countries/:country" >
-            <CountryDetail 
-              
-            />
+            <CountryDetail  />
           </Route>
           <Route path="/">
             <InputSearch />
-            <Country 
-              
-            />
+            <Country />
           </Route>
         </Switch>
-      </BrowserRouter>
-      
-
-      
-      
-      
-
-      
+      </BrowserRouter>      
     </div>
   );
 }
