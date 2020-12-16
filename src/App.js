@@ -1,23 +1,50 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react'
 import './App.css';
+import Country from './components/Country';
+import Header from './components/Header';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import CountryDetail from "./components/CountryDetail";
+import InputSearch from './components/InputSearch';
 
 function App() {
+
+  const [countries, setCountries] = useState([])
+
+  useEffect(() => {
+    fetch('https://restcountries.eu/rest/v2/all')
+    .then((res) => res.json())
+    .then((data) => {
+      setCountries(data)
+    })
+  }, [])  
+
+  console.log(countries)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/countries/:country" >
+            <CountryDetail 
+              
+            />
+          </Route>
+          <Route path="/">
+            <InputSearch />
+            <Country 
+              
+            />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+      
+
+      
+      
+      
+
+      
     </div>
   );
 }
