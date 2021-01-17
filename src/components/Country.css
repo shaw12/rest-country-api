@@ -6,6 +6,7 @@
 .main{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     padding: 0 38px;
 }
@@ -38,5 +39,11 @@ h3{
     
 }
 .card__body span{
-    font-weight: 500;
+    font-weight: 600;
+}
+
+@media(max-width: 552px){
+    .main{
+        justify-content: center;
+    }
 }
